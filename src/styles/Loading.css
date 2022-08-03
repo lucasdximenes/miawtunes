@@ -63,10 +63,12 @@
   margin-right: 25px;
 }
 
+.load-element {
+  position: absolute;
+  top: 26px;
+  left: 57px;
+}
+
 .loading-cat-container img {
   height: 150px;
-  position: absolute;
-  z-index: -1;
-  top: -25px;
-  left: -60px;
 }
