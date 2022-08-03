@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import { createUser } from '../services/userAPI';
-import Loading from '../components/Loading';
+import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import { createUser } from "../services/userAPI";
+import Loading from "../components/Loading";
+import "../styles/Login.css";
+import logo from "../styles/assets/logo.svg";
 
 class Login extends Component {
   state = {
-    name: '',
+    name: "",
     disabledButton: true,
-    loginStatus: 'FALSE',
+    loginStatus: "FALSE",
   };
 
   handleChange = (event) => {
@@ -21,7 +23,7 @@ class Login extends Component {
 
   saveUser = async () => {
     const { name } = this.state;
-    this.setState({ loginStatus: 'PENDING' }, async () => {
+    this.setState({ loginStatus: "PENDING" }, async () => {
       const loggedIn = await createUser({ name });
       this.setState({ loginStatus: loggedIn });
     });
@@ -31,31 +33,34 @@ class Login extends Component {
     const { name, disabledButton, loginStatus } = this.state;
     return (
       <div data-testid="page-login">
-        {loginStatus === 'FALSE' ? (
-          <div className="login-form">
-            <h1>Login</h1>
-            <label htmlFor="name-input">
-              Name:
+        {loginStatus === "FALSE" ? (
+          <div className="login-form-container">
+            <div className="login-form">
+              <img src={logo} alt="miawtunes" />
+              <h1>Faça seu Login primeiro!</h1>
+
               <input
                 data-testid="login-name-input"
                 id="name-input"
                 type="text"
-                value={ name }
-                onChange={ this.handleChange }
+                value={name}
+                placeholder="Miaw usuário"
+                onChange={this.handleChange}
               />
-            </label>
-            <button
-              data-testid="login-submit-button"
-              type="button"
-              onClick={ this.saveUser }
-              disabled={ disabledButton }
-            >
-              Login
-            </button>
+
+              <button
+                data-testid="login-submit-button"
+                type="button"
+                onClick={this.saveUser}
+                disabled={disabledButton}
+              >
+                Login
+              </button>
+            </div>
           </div>
         ) : (
           <div>
-            {loginStatus === 'PENDING' ? (
+            {loginStatus === "PENDING" ? (
               <Loading />
             ) : (
               <Redirect to="/search" />
