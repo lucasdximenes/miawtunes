@@ -1,11 +1,49 @@
 .music-card-container {
-  align-items: center;
-  border-bottom: 1px solid #ccc;
-  border-radius: 5px;
-  border-top: 1px solid #ccc;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: space-around;
-  margin: 15px 0;
-  width: 500px;
+  width: 100%;
+  height: 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.5fr;
+  border-top: 1px solid #e1e5eb;
+  border-bottom: 1px solid #e1e5eb;
+}
+
+.music-card-name {
+  justify-self: self-start;
+  align-self: center;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #001813;
+}
+
+.music-card-player {
+  justify-self: center;
+  align-self: center;
+}
+
+.music-card-favorite-checkbox {
+  justify-self: self-start;
+  align-self: center;
+  margin-left: 25px;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.label {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  background: url(/src/styles/assets/unchecked.svg) no-repeat center center;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.label:hover {
+  transform: scale(1.25);
+}
+
+input[type="checkbox"]:checked + .label {
+  background: url(/src/styles/assets/checked.svg) no-repeat center center;
 }

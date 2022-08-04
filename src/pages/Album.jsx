@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import propTypes from 'prop-types';
-import Header from '../components/Header';
-import getMusics from '../services/musicsAPI';
-import Loading from '../components/Loading';
-import MusicCard from '../components/MusicCard';
+import React, { Component } from "react";
+import propTypes from "prop-types";
+import Header from "../components/Header";
+import getMusics from "../services/musicsAPI";
+import Loading from "../components/Loading";
+import MusicCard from "../components/MusicCard";
 import {
   addSong,
   getFavoriteSongs,
   removeSong,
-} from '../services/favoriteSongsAPI';
-import '../styles/Album.css';
+} from "../services/favoriteSongsAPI";
+import "../styles/Album.css";
 
 class Album extends Component {
   state = {
@@ -29,7 +29,7 @@ class Album extends Component {
     const { id } = match.params;
     const response = await getMusics(id);
     const albumInfo = response[0];
-    const tracks = response.filter((music) => music.kind === 'song');
+    const tracks = response.filter((music) => music.kind === "song");
     this.setState({
       loading: false,
       albumInfo,
@@ -53,7 +53,7 @@ class Album extends Component {
       favoriteTracks.push(parseInt(name, 10));
       this.setState({ loading: true }, async () => {
         const response = await addSong(musicObj);
-        if (response === 'OK') {
+        if (response === "OK") {
           this.setState({
             loading: false,
           });
@@ -63,7 +63,7 @@ class Album extends Component {
       favoriteTracks.splice(favoriteTracks.indexOf(parseInt(name, 10)), 1);
       this.setState({ loading: true }, async () => {
         const response = await removeSong(musicObj);
-        if (response === 'OK') {
+        if (response === "OK") {
           this.setState({
             loading: false,
           });
@@ -81,31 +81,26 @@ class Album extends Component {
     return (
       <div data-testid="page-album">
         <Header />
-        <h1>Album</h1>
         {loading ? (
           <Loading />
         ) : (
           <div className="loaded-album-container">
             <div className="album-container">
-              <img
-                src={ artworkUrl100 }
-                alt={ collectionName }
-                className="album-image"
-              />
-              <p data-testid="album-name" className="album-name">
-                {collectionName}
-              </p>
-              <p data-testid="artist-name" className="album-artist">
-                {artistName}
-              </p>
+              <div className="album-img-container">
+                <img src={artworkUrl100} alt={collectionName} />
+              </div>
+              <div className="album-info-container">
+                <p className="info-collection-name">{collectionName}</p>
+                <p className="info-artist-name">{artistName}</p>
+              </div>
             </div>
             <div className="album-tracks-container">
               {tracks.map((music) => (
                 <MusicCard
-                  handleCheckbox={ this.handleCheckbox }
-                  favoriteTracks={ favoriteTracks }
-                  musicObj={ music }
-                  key={ music.trackId }
+                  handleCheckbox={this.handleCheckbox}
+                  favoriteTracks={favoriteTracks}
+                  musicObj={music}
+                  key={music.trackId}
                 />
               ))}
             </div>
