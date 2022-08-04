@@ -1,0 +1,38 @@
+.not-found-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.not-found-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 900px;
+  position: absolute;
+  top: 60px;
+  z-index: -1;
+}
+
+.not-found-container img {
+  width: 580px;
+}
+
+.not-found-container h1 {
+  text-align: center;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 300;
+  font-size: 48px;
+  color: #625a5a;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.logo-container img {
+  width: 240px;
+}
