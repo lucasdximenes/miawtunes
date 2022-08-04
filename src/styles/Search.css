@@ -243,3 +243,25 @@
   cursor: pointer;
   transform: scale(1);
 }
+
+/* No Results */
+.no-results-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 900px;
+  top: 250px;
+  z-index: -1;
+}
+
+.no-results-container img {
+  width: 580px;
+}
+
+.no-results-container h2 {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-size: 48px;
+  font-weight: 300;
+  color: #625a5a;
+}

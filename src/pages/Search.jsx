@@ -5,6 +5,7 @@ import Loading from "../components/Loading";
 import searchAlbumsAPI from "../services/searchAlbumsAPI";
 import "../styles/Search.css";
 import firstSearch from "../styles/assets/first_search.svg";
+import notFoundCat from "../styles/assets/not_found_cat.webp";
 
 class Search extends Component {
   state = {
@@ -172,7 +173,10 @@ class Search extends Component {
                       })}
                     </div>
                   ) : (
-                    <h3>Nenhum álbum foi encontrado</h3>
+                    <div className="no-results-container">
+                      <img src={notFoundCat} alt="Gato triste" />
+                      <h2>Xiii, eu não encontrei nadinha!</h2>
+                    </div>
                   )}
                 </div>
               </div>
