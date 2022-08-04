@@ -140,19 +140,33 @@ class Search extends Component {
                           artworkUrl100,
                         } = album;
                         return (
-                          <div key={collectionId} className="album-container">
+                          <div key={collectionId} className="album-card">
                             <Link
                               data-testid={`link-to-album-${collectionId}`}
                               to={`/album/${collectionId}`}
                             >
-                              <img
-                                src={artworkUrl100}
-                                alt={collectionName}
-                                className="album-image"
-                              />
+                              <div className="album-img-holder">
+                                <img
+                                  src={artworkUrl100}
+                                  alt={collectionName}
+                                  className="album-image"
+                                />
+                              </div>
                             </Link>
-                            <p className="album-name">{collectionName}</p>
-                            <p className="album-artist">{artistName}</p>
+                            <div className="album-text">
+                              <h2>{collectionName}</h2>
+                              <p>{artistName}</p>
+                            </div>
+                            <Link
+                              data-testid={`link-to-album-${collectionId}`}
+                              to={`/album/${collectionId}`}
+                            >
+                              <div className="album-play-icon">
+                                <div className="album-circle">
+                                  <div className="album-triangle"></div>
+                                </div>
+                              </div>
+                            </Link>
                           </div>
                         );
                       })}
