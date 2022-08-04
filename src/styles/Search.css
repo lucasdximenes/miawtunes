@@ -6,10 +6,10 @@
 }
 
 .searched-albuns {
-  display: grid;
-  grid-gap: 15px;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.3rem;
 }
 
 .album-container {
@@ -40,4 +40,152 @@
   padding: 0;
   text-align: center;
   width: 100%;
+}
+
+.first-search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.first-search-container h1 {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: #e27b7b;
+}
+
+.first-search-container img {
+  width: 50%;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.input-icons {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-icons input {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #625a5a;
+  text-align: center;
+  width: 325px;
+  height: 35px;
+  border-radius: 22px;
+  background-color: #d9d9d9;
+  border: none;
+  outline: none;
+}
+
+.input-icons i {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #e27b7b;
+}
+
+.search-button {
+  align-self: center;
+  font-size: 18px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 700;
+  color: #fff;
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  margin-bottom: 25px;
+  background-color: #e38080;
+  height: 35px;
+  width: 110px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease-in-out;
+  border-radius: 58px;
+}
+
+.search-button:hover {
+  background-color: #efa4a4;
+}
+
+.search-form-container {
+  margin-top: 15px;
+}
+
+.searched-header-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 30px 0 20px 0;
+}
+
+.search-form-searched {
+  display: flex;
+  width: 450px;
+  justify-content: space-between;
+  margin-right: 20px;
+}
+
+.input-icons-searched {
+  position: relative;
+}
+
+.input-icons-searched input {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #625a5a;
+  text-align: center;
+  width: 325px;
+  height: 35px;
+  border-radius: 22px;
+  background-color: #d9d9d9;
+  border: none;
+  outline: none;
+}
+
+.input-icons-searched i {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #e27b7b;
+}
+
+.after-search-button {
+  align-self: center;
+  font-size: 18px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 700;
+  color: #fff;
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  background-color: #e38080;
+  height: 35px;
+  width: 110px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease-in-out;
+  border-radius: 58px;
+}
+
+.after-search-button:hover {
+  background-color: #efa4a4;
+}
+
+.searched-artist-title {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  color: #625a5a;
 }

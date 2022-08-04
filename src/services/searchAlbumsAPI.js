@@ -1,7 +1,7 @@
 const searchAlbumsAPI = async (artist) => {
-  const artistNameURL = encodeURI(artist).replaceAll('%20', '+');
+  const artistNameURL = encodeURI(artist).replaceAll("%20", "+").toLowerCase();
 
-  const getAlbumsAPI = `https://itunes.apple.com/search?entity=album&term=${artistNameURL}&attribute=allArtistTerm`;
+  const getAlbumsAPI = `https://itunes.apple.com/search?term=${artistNameURL}&entity=album&attribute=mixTerm`;
 
   const APIResponse = await fetch(getAlbumsAPI);
 
@@ -26,7 +26,7 @@ const searchAlbumsAPI = async (artist) => {
       artworkUrl100,
       releaseDate,
       trackCount,
-    }),
+    })
   );
   return response;
 };

@@ -1,17 +1,19 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import Header from '../components/Header';
-import Loading from '../components/Loading';
-import searchAlbumsAPI from '../services/searchAlbumsAPI';
-import '../styles/Search.css';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import Header from "../components/Header";
+import Loading from "../components/Loading";
+import searchAlbumsAPI from "../services/searchAlbumsAPI";
+import "../styles/Search.css";
+import firstSearch from "../styles/assets/first_search.svg";
 
 class Search extends Component {
   state = {
-    inputArtistName: '',
+    inputArtistName: "",
     buttonDisabled: true,
     loading: false,
-    searchedArtist: '',
+    searchedArtist: "",
     albums: [],
+    isFirstSearch: true,
   };
 
   handleChange = (event) => {
@@ -26,7 +28,7 @@ class Search extends Component {
         this.setState({
           buttonDisabled: !isValid,
         });
-      },
+      }
     );
   };
 
@@ -34,7 +36,7 @@ class Search extends Component {
     event.preventDefault();
     const { inputArtistName } = this.state;
     this.setState({
-      inputArtistName: '',
+      inputArtistName: "",
       buttonDisabled: true,
       loading: true,
     });
@@ -43,77 +45,122 @@ class Search extends Component {
       loading: false,
       searchedArtist: inputArtistName,
       albums: response,
+      isFirstSearch: false,
     });
   };
 
   render() {
     // prettier-ignore
     const {
-      inputArtistName, buttonDisabled, loading, searchedArtist, albums,
+      inputArtistName, buttonDisabled, loading, searchedArtist, albums, isFirstSearch
     } = this.state;
     return (
       <div data-testid="page-search">
         <Header />
-        <h1>Search</h1>
         {loading ? (
           <Loading />
         ) : (
           <div className="search-form-container">
-            <form className="search-form">
-              <label htmlFor="search-input">
-                Search:
-                <input
-                  data-testid="search-artist-input"
-                  id="search-input"
-                  type="text"
-                  name="inputArtistName"
-                  placeholder="Search"
-                  value={ inputArtistName }
-                  onChange={ this.handleChange }
-                />
-              </label>
-              <button
-                data-testid="search-artist-button"
-                type="submit"
-                onClick={ this.handleSubmit }
-                disabled={ buttonDisabled }
-              >
-                Pesquisar
-              </button>
-            </form>
-            {searchedArtist && (
-              <div className="search-results">
-                <h2>{`Resultado de álbuns de: ${searchedArtist}`}</h2>
-                {albums.length > 0 ? (
-                  <div className="searched-albuns">
-                    {albums.map((album) => {
-                      const {
-                        artistName,
-                        collectionName,
-                        collectionId,
-                        artworkUrl100,
-                      } = album;
-                      return (
-                        <div key={ collectionId } className="album-container">
-                          <Link
-                            data-testid={ `link-to-album-${collectionId}` }
-                            to={ `/album/${collectionId}` }
-                          >
-                            <img
-                              src={ artworkUrl100 }
-                              alt={ collectionName }
-                              className="album-image"
-                            />
-                          </Link>
-                          <p className="album-name">{collectionName}</p>
-                          <p className="album-artist">{artistName}</p>
-                        </div>
-                      );
-                    })}
+            {isFirstSearch && (
+              <div>
+                <div className="first-search-container">
+                  <h1>Faça sua primeira pesquisa!</h1>
+                </div>
+                <form className="search-form">
+                  <div className="input-icons">
+                    <i className="material-icons" style={{ fontSize: "2rem" }}>
+                      search
+                    </i>
+                    <input
+                      data-testid="search-artist-input"
+                      id="search-input"
+                      type="text"
+                      name="inputArtistName"
+                      placeholder="Search"
+                      value={inputArtistName}
+                      onChange={this.handleChange}
+                    />
                   </div>
-                ) : (
-                  <h3>Nenhum álbum foi encontrado</h3>
-                )}
+                  <button
+                    data-testid="search-artist-button"
+                    className="search-button"
+                    type="submit"
+                    onClick={this.handleSubmit}
+                    disabled={buttonDisabled}
+                  >
+                    Pesquisar
+                  </button>
+                </form>
+                <div className="first-search-container">
+                  <img src={firstSearch} alt="first search" />
+                </div>
+              </div>
+            )}
+            {searchedArtist && (
+              <div>
+                <div className="searched-header-container">
+                  <h2 className="searched-artist-title">{`Resultados da pesquisa por albuns de: ${searchedArtist}`}</h2>
+                  <form className="search-form-searched">
+                    <div className="input-icons-searched">
+                      <i
+                        className="material-icons"
+                        style={{ fontSize: "2rem" }}
+                      >
+                        search
+                      </i>
+                      <input
+                        data-testid="search-artist-input"
+                        id="search-input"
+                        type="text"
+                        name="inputArtistName"
+                        placeholder="Search"
+                        value={inputArtistName}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                    <button
+                      data-testid="search-artist-button"
+                      className="after-search-button"
+                      type="submit"
+                      onClick={this.handleSubmit}
+                      disabled={buttonDisabled}
+                    >
+                      Pesquisar
+                    </button>
+                  </form>
+                </div>
+                <div className="search-results">
+                  {albums.length > 0 ? (
+                    <div className="searched-albuns">
+                      {albums.map((album) => {
+                        const {
+                          artistName,
+                          collectionName,
+                          collectionId,
+                          artworkUrl100,
+                        } = album;
+                        return (
+                          <div key={collectionId} className="album-container">
+                            <Link
+                              data-testid={`link-to-album-${collectionId}`}
+                              to={`/album/${collectionId}`}
+                            >
+                              <img
+                                src={artworkUrl100}
+                                alt={collectionName}
+                                className="album-image"
+                              />
+                            </Link>
+                            <p className="album-name">{collectionName}</p>
+                            <p className="album-artist">{artistName}</p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <h3>Nenhum álbum foi encontrado</h3>
+                  )}
+                </div>
               </div>
             )}
           </div>
