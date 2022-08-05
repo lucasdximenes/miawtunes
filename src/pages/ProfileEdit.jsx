@@ -1,17 +1,19 @@
-import React, { Component } from 'react';
-import propTypes from 'prop-types';
-import { getUser, updateUser } from '../services/userAPI';
-import Loading from '../components/Loading';
-import Header from '../components/Header';
+import React, { Component } from "react";
+import propTypes from "prop-types";
+import { getUser, updateUser } from "../services/userAPI";
+import Loading from "../components/Loading";
+import Header from "../components/Header";
+import "../styles/ProfileEdit.css";
+import avatar from "../styles/assets/avatar.svg";
 
 class ProfileEdit extends Component {
   state = {
     loading: true,
     isValid: false,
-    name: '',
-    email: '',
-    image: '',
-    description: '',
+    name: "",
+    email: "",
+    image: "",
+    description: "",
   };
 
   componentDidMount = () => {
@@ -31,7 +33,7 @@ class ProfileEdit extends Component {
       },
       () => {
         this.validateForm();
-      },
+      }
     );
   };
 
@@ -48,7 +50,7 @@ class ProfileEdit extends Component {
       const { name, email, image, description } = this.state;
       await updateUser({ name, email, image, description });
       const { history } = this.props;
-      history.push('/profile');
+      history.push("/profile");
     });
   };
 
@@ -66,77 +68,87 @@ class ProfileEdit extends Component {
 
   render() {
     const { loading, isValid, name, email, image, description } = this.state;
+    const previewImage = avatar;
 
     return (
-      <div data-testid="page-profile-edit">
+      <div>
         <Header />
-        <h1>Profile Edit</h1>
         {loading ? (
           <Loading />
         ) : (
-          <form className="edit-profile-form-container">
-            <div className="edit-profile-form-container__input-container">
-              <label htmlFor="name">
-                Name
+          <div className="form-edit-profile-container">
+            <form className="form-container">
+              <div className="form-image-input">
+                <div className="avatar-preview">
+                  <img src={previewImage} alt="avatar" />
+                </div>
+                <div className="image-input">
+                  <label htmlFor="image">Alterar imagem</label>
+                  <input
+                    type="text"
+                    id="image"
+                    name="image"
+                    value={image}
+                    placeholder="Insira o link aqui"
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+
+              <div className="form-name-input">
+                <div className="name-label">
+                  <label htmlFor="name">Name</label>
+                  <span>como devemos te chamar?</span>
+                </div>
                 <input
-                  data-testid="edit-input-name"
                   type="text"
                   id="name"
                   name="name"
-                  value={ name }
-                  onChange={ this.handleChange }
+                  value={name}
+                  placeholder="Miaw Usuário"
+                  onChange={this.handleChange}
                 />
-              </label>
-            </div>
-            <div className="edit-profile-form-container__input-container">
-              <label htmlFor="email">
-                Email
+              </div>
+
+              <div className="form-email-input">
+                <div className="email-label">
+                  <label htmlFor="email">Email</label>
+                  <span>coloque seu email atual.</span>
+                </div>
                 <input
-                  data-testid="edit-input-email"
                   type="text"
                   id="email"
                   name="email"
-                  value={ email }
-                  onChange={ this.handleChange }
+                  placeholder="miawusuario@miawmiaw.com"
+                  value={email}
+                  onChange={this.handleChange}
                 />
-              </label>
-            </div>
-            <div className="edit-profile-form-container__input-container">
-              <label htmlFor="image">
-                Image
-                <input
-                  data-testid="edit-input-image"
-                  type="text"
-                  id="image"
-                  name="image"
-                  value={ image }
-                  onChange={ this.handleChange }
-                />
-              </label>
-            </div>
-            <div className="edit-profile-form-container__input-container">
-              <label htmlFor="description">
-                Description
-                <input
-                  data-testid="edit-input-description"
-                  type="text"
+              </div>
+
+              <div className="form-description-input">
+                <div className="description-label">
+                  <label htmlFor="description">Description</label>
+                  <span>fale sobre você.</span>
+                </div>
+                <textarea
                   id="description"
                   name="description"
-                  value={ description }
-                  onChange={ this.handleChange }
+                  placeholder="Escreva sua bio"
+                  value={description}
+                  onChange={this.handleChange}
                 />
-              </label>
-            </div>
-            <button
-              data-testid="edit-button-save"
-              type="button"
-              className="btn btn-primary"
-              disabled={ !isValid }
-              onClick={ this.handleSubmit }
-            >
-              Save
-            </button>
-          </form>
+              </div>
+
+              <button
+                type="button"
+                className="save-profile-button"
+                disabled={!isValid}
+                onClick={this.handleSubmit}
+              >
+                Save
+              </button>
+            </form>
+          </div>
         )}
       </div>
     );
