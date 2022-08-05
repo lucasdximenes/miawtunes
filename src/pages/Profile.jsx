@@ -1,15 +1,17 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { getUser } from '../services/userAPI';
-import Loading from '../components/Loading';
-import Header from '../components/Header';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { getUser } from "../services/userAPI";
+import Loading from "../components/Loading";
+import Header from "../components/Header";
+import defaultAvatar from "../styles/assets/avatar.svg";
+import "../styles/Profile.css";
 
 class Profile extends Component {
   state = {
-    name: '',
-    email: '',
-    image: '',
-    description: '',
+    name: "",
+    email: "",
+    image: "",
+    description: "",
     loading: true,
   };
 
@@ -29,25 +31,35 @@ class Profile extends Component {
   };
 
   render() {
-    const { name, email, image, description, loading } = this.state;
+    const { name, email, description, loading } = this.state;
+    let { image } = this.state;
+    if (image === "") image = defaultAvatar;
     return (
       <div data-testid="page-profile">
         <Header />
-        <h1>Profile</h1>
         {loading ? (
           <Loading />
         ) : (
           <div className="profile-container">
-            <div className="profile-image-container">
-              <img data-testid="profile-image" src={ image } alt="profile" />
-              <Link to="/profile/edit">
-                <button type="button">Editar perfil</button>
-              </Link>
-            </div>
-            <div className="profile-info">
-              <p>{name}</p>
-              <p>{email}</p>
-              <p>{description}</p>
+            <div className="profile-infos-container">
+              <div className="profile-image-container">
+                <img data-testid="profile-image" src={image} alt="profile" />
+                <Link to="/profile/edit">Editar perfil</Link>
+              </div>
+              <div className="profile-info">
+                <div className="profile-name">
+                  <h2>Name</h2>
+                  <p>{name}</p>
+                </div>
+                <div className="profile-email">
+                  <h2>Email</h2>
+                  <p>{email}</p>
+                </div>
+                <div className="profile-description">
+                  <h2>Description</h2>
+                  <p>{description}</p>
+                </div>
+              </div>
             </div>
           </div>
         )}
