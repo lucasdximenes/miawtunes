@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
-import { getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
-import Header from '../components/Header';
-import Loading from '../components/Loading';
-import MusicCard from '../components/MusicCard';
+import React, { Component } from "react";
+import { getFavoriteSongs, removeSong } from "../services/favoriteSongsAPI";
+import Header from "../components/Header";
+import Loading from "../components/Loading";
+import MusicCard from "../components/MusicCard";
+import "../styles/Favorites.css";
+import favoriteCat from "../styles/assets/favorite_cat.svg";
+import favoriteHeart from "../styles/assets/favorite_heart.svg";
 
 class Favorites extends Component {
   state = {
@@ -19,7 +22,7 @@ class Favorites extends Component {
     this.setState({ loading: true }, async () => {
       const favoriteSongs = await getFavoriteSongs();
       const favoriteTracksIds = favoriteSongs.map(
-        (musicObj) => musicObj.trackId,
+        (musicObj) => musicObj.trackId
       );
       this.setState({
         favoriteTracks: favoriteSongs,
@@ -35,11 +38,11 @@ class Favorites extends Component {
     if (!checked) {
       favoriteTracksIds.splice(
         favoriteTracksIds.indexOf(parseInt(name, 10)),
-        1,
+        1
       );
       this.setState({ loading: true }, async () => {
         const response = await removeSong(musicObj);
-        if (response === 'OK') {
+        if (response === "OK") {
           this.loadFavoriteSongs();
         }
       });
@@ -51,21 +54,28 @@ class Favorites extends Component {
     return (
       <div data-testid="page-favorites">
         <Header />
-        <h1>Favorites</h1>
         <div className="favorites-container">
+          <div className="favorites-header">
+            <img src={favoriteHeart} alt="coração" />
+            <h1>Favorites</h1>
+          </div>
           {loading ? (
             <Loading />
           ) : (
             <div className="favorites-list">
-              <h2>Músicas favoritas:</h2>
-              {favoriteTracks.map((musicObj) => (
-                <MusicCard
-                  key={ musicObj.trackId }
-                  musicObj={ musicObj }
-                  handleCheckbox={ this.handleCheckbox }
-                  favoriteTracks={ favoriteTracksIds }
-                />
-              ))}
+              <div className="favorite-cat">
+                <img src={favoriteCat} alt="gato" />
+              </div>
+              <div className="favorite-tracks">
+                {favoriteTracks.map((musicObj) => (
+                  <MusicCard
+                    key={musicObj.trackId}
+                    musicObj={musicObj}
+                    handleCheckbox={this.handleCheckbox}
+                    favoriteTracks={favoriteTracksIds}
+                  />
+                ))}
+              </div>
             </div>
           )}
         </div>
