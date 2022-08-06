@@ -35,3 +35,18 @@
 .favorite-tracks {
   flex: 1.5;
 }
+
+@media screen and (max-width: 768px) {
+  .favorites-list {
+    flex-direction: column-reverse;
+  }
+  .favorite-cat {
+    margin-top: 25px;
+    margin-right: 0;
+  }
+
+  .favorites-header {
+    margin: 0 0 15px 0;
+    align-self: center;
+  }
+}
