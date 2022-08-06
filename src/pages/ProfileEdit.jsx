@@ -9,7 +9,7 @@ import avatar from "../styles/assets/avatar.svg";
 class ProfileEdit extends Component {
   state = {
     loading: true,
-    isValid: false,
+    isValid: true,
     name: "",
     email: "",
     image: "",
@@ -56,19 +56,21 @@ class ProfileEdit extends Component {
 
   validateForm = () => {
     const emailRegex = /\b[\w\\.-]+@[\w\\.-]+\.\w{2,4}\b/gi;
-    const { name, email, image, description } = this.state;
-    const isValid = [
-      name.length > 0,
-      email.length > 0 && emailRegex.test(email),
-      image.length > 0,
-      description.length > 0,
-    ].every(Boolean);
-    this.setState({ isValid });
+    const { email } = this.state;
+    if (email === "") {
+      this.setState({ isValid: true });
+    } else if (email.length > 0 && !emailRegex.test(email)) {
+      this.setState({ isValid: false });
+    } else {
+      this.setState({ isValid: true });
+    }
   };
 
   render() {
     const { loading, isValid, name, email, image, description } = this.state;
     const previewImage = avatar;
+    const urlRegex =
+      /[(http(s)?):\\/\\/(www\\.)?a-zA-Z0-9@:%._\\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)/gi;
 
     return (
       <div>
@@ -80,7 +82,10 @@ class ProfileEdit extends Component {
             <form className="form-container">
               <div className="form-image-input">
                 <div className="avatar-preview">
-                  <img src={previewImage} alt="avatar" />
+                  <img
+                    src={urlRegex.test(image) ? image : previewImage}
+                    alt="avatar"
+                  />
                 </div>
                 <div className="image-input">
                   <label htmlFor="image">Alterar imagem</label>
