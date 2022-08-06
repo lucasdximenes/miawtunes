@@ -165,3 +165,58 @@ textarea {
   font-size: 25px;
   font-weight: 800;
 }
+
+@media screen and (max-width: 450px) {
+  label {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: #e38080;
+  }
+
+  span {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #e38080;
+  }
+
+  input {
+    width: 100%;
+    height: 40px;
+    background-color: #d9d9d9;
+    border-radius: 58px;
+    border: none;
+    outline: none;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: #625a5a;
+    text-align: center;
+  }
+
+  textarea {
+    box-sizing: border-box;
+    resize: none;
+    width: 100%;
+    padding: 25px;
+    height: 145px;
+    background-color: #d9d9d9;
+    border-radius: 17px;
+    border: none;
+    outline: none;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: #625a5a;
+  }
+
+  .form-container {
+    align-items: center;
+    max-width: 300px;
+  }
+
+  .image-input input {
+    width: 175px;
+  }
+}
