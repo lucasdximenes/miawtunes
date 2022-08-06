@@ -7,8 +7,10 @@
 }
 
 .loading h1 {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #625a5a;
   margin: 0 10px;
 }
 
