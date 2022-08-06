@@ -61,3 +61,14 @@
   height: 50px;
   border-radius: 58px;
 }
+
+button:disabled {
+  cursor: not-allowed;
+  background-color: #d9d9d9;
+  color: #625a5a;
+}
+
+button:disabled:hover {
+  background-color: #d9d9d9;
+  color: #625a5a;
+}

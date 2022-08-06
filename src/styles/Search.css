@@ -267,6 +267,17 @@
   color: #625a5a;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  background-color: #d9d9d9;
+  color: #625a5a;
+}
+
+button:disabled:hover {
+  background-color: #d9d9d9;
+  color: #625a5a;
+}
+
 @media screen and (max-width: 1080px) {
   .searched-header-container {
     flex-direction: column-reverse;
