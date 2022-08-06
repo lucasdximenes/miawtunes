@@ -47,3 +47,41 @@ input[type="checkbox"] {
 input[type="checkbox"]:checked + .label {
   background: url(/src/styles/assets/checked.svg) no-repeat center center;
 }
+
+@media screen and (max-width: 768px) {
+  .music-card-name {
+    margin-left: 15px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .music-card-container {
+    display: grid;
+    grid-template-columns: 1fr 0.1fr;
+    grid-template-rows: 1fr 1fr;
+    height: auto;
+  }
+
+  .music-card-player {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+  }
+
+  .music-card-name {
+    margin-left: 0;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    font-size: 16px;
+  }
+
+  .music-card-favorite-checkbox {
+    grid-column-start: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    align-self: center;
+    justify-self: center;
+    margin: 0 10px;
+  }
+}
