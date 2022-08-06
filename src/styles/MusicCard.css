@@ -69,7 +69,7 @@ input[type="checkbox"]:checked + .label {
   }
 
   .music-card-name {
-    margin-left: 0;
+    margin-left: 10px;
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 1;
