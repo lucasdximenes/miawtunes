@@ -57,7 +57,7 @@ class Favorites extends Component {
         <div className="favorites-container">
           <div className="favorites-header">
             <img src={favoriteHeart} alt="coração" />
-            <h1>Favorites</h1>
+            <h1>Favoritas</h1>
           </div>
           {loading ? (
             <Loading />

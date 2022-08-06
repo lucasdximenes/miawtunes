@@ -102,7 +102,7 @@ class ProfileEdit extends Component {
 
               <div className="form-name-input">
                 <div className="name-label">
-                  <label htmlFor="name">Name</label>
+                  <label htmlFor="name">Nome</label>
                   <span>como devemos te chamar?</span>
                 </div>
                 <input
@@ -132,7 +132,7 @@ class ProfileEdit extends Component {
 
               <div className="form-description-input">
                 <div className="description-label">
-                  <label htmlFor="description">Description</label>
+                  <label htmlFor="description">Descrição</label>
                   <span>fale sobre você.</span>
                 </div>
                 <textarea
@@ -150,7 +150,7 @@ class ProfileEdit extends Component {
                 disabled={!isValid}
                 onClick={this.handleSubmit}
               >
-                Save
+                Salvar
               </button>
             </form>
           </div>

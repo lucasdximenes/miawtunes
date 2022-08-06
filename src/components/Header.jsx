@@ -36,17 +36,17 @@ class Header extends Component {
               <nav>
                 <Link to="/search" data-testid="link-to-search">
                   <button type="button" className="header-nav-btn">
-                    Search
+                    Busca
                   </button>
                 </Link>
                 <Link to="/favorites" data-testid="link-to-favorites">
                   <button type="button" className="header-nav-btn">
-                    Favorites
+                    Favoritas
                   </button>
                 </Link>
                 <Link to="/profile" data-testid="link-to-profile">
                   <button type="button" className="header-nav-btn">
-                    Profile
+                    Perfil
                   </button>
                 </Link>
               </nav>

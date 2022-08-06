@@ -77,7 +77,7 @@ class Search extends Component {
                       id="search-input"
                       type="text"
                       name="inputArtistName"
-                      placeholder="Search"
+                      placeholder="Album ou Artista"
                       value={inputArtistName}
                       onChange={this.handleChange}
                     />
@@ -114,7 +114,7 @@ class Search extends Component {
                         id="search-input"
                         type="text"
                         name="inputArtistName"
-                        placeholder="Search"
+                        placeholder="Album ou Artista"
                         value={inputArtistName}
                         onChange={this.handleChange}
                       />

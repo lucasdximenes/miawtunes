@@ -48,7 +48,7 @@ class Profile extends Component {
               </div>
               <div className="profile-info">
                 <div className="profile-name">
-                  <h2>Name</h2>
+                  <h2>Nome</h2>
                   <p>{name}</p>
                 </div>
                 <div className="profile-email">
@@ -56,7 +56,7 @@ class Profile extends Component {
                   <p>{email}</p>
                 </div>
                 <div className="profile-description">
-                  <h2>Description</h2>
+                  <h2>Descrição</h2>
                   <p>{description}</p>
                 </div>
               </div>
