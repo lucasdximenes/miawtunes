@@ -17,6 +17,15 @@ Miaw Tunes é um aplicativo criado em React capaz de reproduzir músicas das mai
 ### - [MiawTunes](https://miawtunes.vercel.app/)
 
 ---
+# Previews:
+
+https://user-images.githubusercontent.com/71415845/183264221-e1dc3a60-cb94-48bb-a26c-f55b881c73a6.mp4
+
+https://user-images.githubusercontent.com/71415845/183264244-577e3918-543e-41d8-b99f-44f1be18370f.mp4
+
+![MiawTunes_NotFound_preview](https://user-images.githubusercontent.com/71415845/183264250-095d9a21-8059-4da4-9733-a76ac4f823ff.png)
+
+---
 
 ## Instalação
 
